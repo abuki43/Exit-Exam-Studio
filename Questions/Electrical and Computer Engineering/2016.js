@@ -184,7 +184,7 @@ x(t) = 10 cos 200πt`,
         }), "/V", e.jsx("sub", {
             children: "in"
         }), ".", e.jsx("img", {
-            src: "images/transfer_function_q26.png",
+            src: "images/questions/transfer_function_q26.png",
             alt: "Transfer function diagram",
             style: {
                 width: "100%",

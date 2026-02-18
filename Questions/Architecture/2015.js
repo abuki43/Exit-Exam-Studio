@@ -134,7 +134,7 @@
     id: 23,
     question: e.jsxs("div", {
         children: ["From the figure below, which one is correctly written in the order of I, II, III, IV, V, and VI?", e.jsx("img", {
-            src: "images/architecture2015q23.png",
+            src: "images/questions/architecture2015q23.png",
             alt: "Figure for question 23",
             style: {
                 width: "100%",
