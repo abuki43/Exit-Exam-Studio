@@ -531,7 +531,7 @@ Second operation: n = -9 * 3 = -27`
     id: 80,
     question: e.jsxs("div", {
         children: ["What is the purpose of an opcode that is as indicated in the figure below?", e.jsx("img", {
-            src: "/questions/opcode.png",
+            src: "images/questions/opcode.png",
             alt: "opcode",
             style: {
                 maxWidth: "300px"

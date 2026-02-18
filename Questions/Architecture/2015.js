@@ -134,7 +134,7 @@
     id: 23,
     question: e.jsxs("div", {
         children: ["From the figure below, which one is correctly written in the order of I, II, III, IV, V, and VI?", e.jsx("img", {
-            src: "/architecture2015q23.png",
+            src: "images/architecture2015q23.png",
             alt: "Figure for question 23",
             style: {
                 width: "100%",
@@ -155,7 +155,7 @@
     id: 24,
     question: e.jsxs("div", {
         children: ["From the figure below, which one is diffused solar radiation?", e.jsx("img", {
-            src: "/questions/architecture2015q24.png",
+            src: "images/questions/architecture2015q24.png",
             alt: "Figure for question 24",
             style: {
                 width: "100%",
@@ -435,7 +435,7 @@
     id: 69,
     question: e.jsxs("div", {
         children: ["Which one can more express the given figure below among the options given?", e.jsx("img", {
-            src: "/questions/architecture2015q69.png",
+            src: "images/questions/architecture2015q69.png",
             alt: "Figure for question 69",
             style: {
                 width: "100%",
@@ -463,28 +463,28 @@
     id: 72,
     question: "Which one is Howe truss type?",
     options: [e.jsx("img", {
-        src: "/questions/architecture2015q72A.png",
+        src: "images/questions/architecture2015q72A.png",
         alt: "Option A",
         style: {
             width: "100%",
             maxWidth: "200px"
         }
     }), e.jsx("img", {
-        src: "/questions/architecture2015q72B.png",
+        src: "images/questions/architecture2015q72B.png",
         alt: "Option B",
         style: {
             width: "100%",
             maxWidth: "200px"
         }
     }), e.jsx("img", {
-        src: "/questions/architecture2015q72C.png",
+        src: "images/questions/architecture2015q72C.png",
         alt: "Option C",
         style: {
             width: "100%",
             maxWidth: "200px"
         }
     }), e.jsx("img", {
-        src: "/questions/architecture2015q72D.png",
+        src: "images/questions/architecture2015q72D.png",
         alt: "Option D",
         style: {
             width: "100%",
@@ -641,7 +641,7 @@
     id: 97,
     question: e.jsxs("div", {
         children: ["Which types of composition can clearly show in the figure below?", e.jsx("img", {
-            src: "/questions/architecture2015q97.png",
+            src: "images/questions/architecture2015q97.png",
             alt: "Figure for question 97",
             style: {
                 width: "100%",

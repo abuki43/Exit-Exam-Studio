@@ -528,7 +528,7 @@ public class Print {
     id: 84,
     question: e.jsxs("div", {
         children: ["Consider below figure: Then the network address, 180.70.65.130 goes through which of the following interface?", e.jsx("img", {
-            src: "/questions/networkIT2015id84.png",
+            src: "images/questions/networkIT2015id84.png",
             alt: "network",
             style: {
                 maxWidth: "350px"
@@ -632,7 +632,7 @@ Which of the statements above are CORRECT?`,
     id: 95,
     question: e.jsxs("div", {
         children: ["In the given network diagram below what is the best route from node A to node J using Dijkstra algorithm? Assume the source is at vertex A.", e.jsx("img", {
-            src: "/questions/networkIT2015id95.png",
+            src: "images/questions/networkIT2015id95.png",
             alt: "network",
             style: {
                 maxWidth: "350px"

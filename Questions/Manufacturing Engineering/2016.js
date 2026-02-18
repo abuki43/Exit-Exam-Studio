@@ -146,7 +146,7 @@
     id: 25,
     question: e.jsxs("div", {
         children: ["As per the Gruebelers' mobility criteria, the slider-crank mechanism will have number of degree of freedom.", e.jsx("img", {
-            src: "/questions/slider-crank.png",
+            src: "images/questions/slider-crank.png",
             alt: "slider-crank",
             style: {
                 maxWidth: "300px"

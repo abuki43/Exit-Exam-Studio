@@ -20,28 +20,28 @@
     id: 4,
     question: "Which one of the following flow chart symbol is used for decision",
     options: [e.jsx("img", {
-        src: "/questions/flowchart_diamond.png",
+        src: "images/questions/flowchart_diamond.png",
         alt: "Diamond shape",
         style: {
             width: "50px",
             height: "50px"
         }
     }), e.jsx("img", {
-        src: "/questions/flowchart_rectangle.png",
+        src: "images/questions/flowchart_rectangle.png",
         alt: "Rectangle shape",
         style: {
             width: "50px",
             height: "50px"
         }
     }), e.jsx("img", {
-        src: "/questions/flowchart_oval.png",
+        src: "images/questions/flowchart_oval.png",
         alt: "Oval shape",
         style: {
             width: "50px",
             height: "50px"
         }
     }), e.jsx("img", {
-        src: "/questions/flowchart_parallelogram.png",
+        src: "images/questions/flowchart_parallelogram.png",
         alt: "Parallelogram shape",
         style: {
             width: "50px",
@@ -96,7 +96,7 @@
     id: 12,
     question: e.jsxs("div", {
         children: ["This item is based on the following electrical circuit", e.jsx("img", {
-            src: "/questions/logic_gate_circuit.png",
+            src: "images/questions/logic_gate_circuit.png",
             alt: "Logic gate circuit",
             style: {
                 maxWidth: "300px"
@@ -157,7 +157,7 @@
     id: 20,
     question: e.jsxs("div", {
         children: ["Realize the network in Cauer form", e.jsx("img", {
-            src: "/questions/cauer_form.png",
+            src: "images/questions/cauer_form.png",
             alt: "Cauer form equation",
             style: {
                 maxWidth: "300px"
@@ -170,25 +170,25 @@
         })]
     }),
     options: [e.jsx("img", {
-        src: "/questions/cauer_form_first.png",
+        src: "images/questions/cauer_form_first.png",
         alt: "First form",
         onError: n => {
             n.currentTarget.src = "/questions/cauer_form_first_backup.png"
         }
     }), e.jsx("img", {
-        src: "/questions/cauer_form_second.png",
+        src: "images/questions/cauer_form_second.png",
         alt: "Second form",
         onError: n => {
             n.currentTarget.src = "/questions/cauer_form_second_backup.png"
         }
     }), e.jsx("img", {
-        src: "/questions/cauer_form_third.png",
+        src: "images/questions/cauer_form_third.png",
         alt: "Third form",
         onError: n => {
             n.currentTarget.src = "/questions/cauer_form_third_backup.png"
         }
     }), e.jsx("img", {
-        src: "/questions/cauer_form_fourth.png",
+        src: "images/questions/cauer_form_fourth.png",
         alt: "Fourth form",
         onError: n => {
             n.currentTarget.src = "/questions/cauer_form_fourth_backup.png"
@@ -266,7 +266,7 @@
     id: 32,
     question: e.jsxs("div", {
         children: ["This item is based on the following electrical circuit", e.jsx("img", {
-            src: "/questions/logic_gate_circuit.png",
+            src: "images/questions/logic_gate_circuit.png",
             alt: "Logic gate circuit",
             style: {
                 maxWidth: "300px"
@@ -345,7 +345,7 @@
     id: 44,
     question: e.jsxs("div", {
         children: ["This item is based on the diagram of 7-segment display shown below", e.jsx("img", {
-            src: "/questions/7segment_display.png",
+            src: "images/questions/7segment_display.png",
             alt: "7-segment display",
             style: {
                 maxWidth: "300px"
@@ -383,7 +383,7 @@
         children: ["The Thevenin equivalent resistance (R", e.jsx("sub", {
             children: "Th"
         }), ") for the circuit shown in the figure below is", e.jsx("img", {
-            src: "/questions/thevenin_circuit.png",
+            src: "images/questions/thevenin_circuit.png",
             alt: "Thevenin circuit",
             style: {
                 maxWidth: "300px"
@@ -427,7 +427,7 @@
     id: 51,
     question: e.jsxs("div", {
         children: ["Determine the driving point impedance Z₂₁(s) for the network shown below", e.jsx("img", {
-            src: "/questions/network_impedance.png",
+            src: "images/questions/network_impedance.png",
             alt: "Network impedance",
             style: {
                 maxWidth: "300px"
@@ -517,7 +517,7 @@
     id: 63,
     question: e.jsxs("div", {
         children: ["This item is based on the diagram of a filter response given below", e.jsx("img", {
-            src: "/questions/filter_response.png",
+            src: "images/questions/filter_response.png",
             alt: "Filter response",
             style: {
                 maxWidth: "300px"
@@ -553,7 +553,7 @@
     id: 66,
     question: e.jsxs("div", {
         children: ["This item is based on the following diagram of the symbol used in electrical network.", e.jsx("img", {
-            src: "/questions/impedance_symbol.png",
+            src: "images/questions/impedance_symbol.png",
             alt: "Impedance symbol",
             style: {
                 maxWidth: "300px"
@@ -585,7 +585,7 @@
     id: 68,
     question: e.jsxs("div", {
         children: ["Find the Y₂₁(s) parameter of the network shown below", e.jsx("img", {
-            src: "/questions/y_parameter_network.png",
+            src: "images/questions/y_parameter_network.png",
             alt: "Y-parameter network",
             style: {
                 maxWidth: "300px"
@@ -695,7 +695,7 @@
     id: 83,
     question: e.jsxs("div", {
         children: ["This item is based on the diagram of a filter network given below", e.jsx("img", {
-            src: "/questions/filter_network.png",
+            src: "images/questions/filter_network.png",
             alt: "Filter network",
             style: {
                 maxWidth: "300px"

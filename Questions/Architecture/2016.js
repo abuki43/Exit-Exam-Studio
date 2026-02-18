@@ -266,7 +266,7 @@
     id: 45,
     question: "In architecture there are three known types of spaces, which graphical representations does not show major spaces that portray a sense of definite location or position.",
     options: [e.jsx("img", {
-        src: "questions/architecture2016q45a.png",
+        src: "images/questions/architecture2016q45a.png",
         alt: "Option A",
         style: {
             width: "100%",
@@ -279,7 +279,7 @@
             t.style.display = "none")
         }
     }), e.jsx("img", {
-        src: "questions/architecture2016q45b.png",
+        src: "images/questions/architecture2016q45b.png",
         alt: "Option B",
         style: {
             width: "100%",
@@ -292,7 +292,7 @@
             t.style.display = "none")
         }
     }), e.jsx("img", {
-        src: "questions/architecture2016q45c.png",
+        src: "images/questions/architecture2016q45c.png",
         alt: "Option C",
         style: {
             width: "100%",
@@ -305,7 +305,7 @@
             t.style.display = "none")
         }
     }), e.jsx("img", {
-        src: "questions/architecture2016q45d.png",
+        src: "images/questions/architecture2016q45d.png",
         alt: "Option D",
         style: {
             width: "100%",
@@ -522,7 +522,7 @@
     id: 79,
     question: e.jsxs("div", {
         children: ["Determine the magnitude of the resultant force acting on the shaft shown from left.", e.jsx("img", {
-            src: "questions/architecture2016q79.png",
+            src: "images/questions/architecture2016q79.png",
             alt: "Figure for question 23",
             style: {
                 width: "100%",

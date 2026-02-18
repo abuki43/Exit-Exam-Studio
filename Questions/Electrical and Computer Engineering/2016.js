@@ -67,7 +67,7 @@ int main()
     id: 10,
     question: e.jsxs("div", {
         children: ["The diagram below represents a simple circuit consisting of a variable resistor, a battery, an ammeter, and a voltmeter.", e.jsx("img", {
-            src: "/questions/circuit_diagram_q10.png",
+            src: "images/questions/circuit_diagram_q10.png",
             alt: "Circuit diagram with variable resistor",
             style: {
                 width: "100%",
@@ -184,7 +184,7 @@ x(t) = 10 cos 200πt`,
         }), "/V", e.jsx("sub", {
             children: "in"
         }), ".", e.jsx("img", {
-            src: "/transfer_function_q26.png",
+            src: "images/transfer_function_q26.png",
             alt: "Transfer function diagram",
             style: {
                 width: "100%",
@@ -224,7 +224,7 @@ x(t) = 10 cos 200πt`,
     id: 29,
     question: e.jsxs("div", {
         children: ["From the delta network given below the value of resistor in equivalent Y-network is respectively ______.", e.jsx("img", {
-            src: "/questions/delta_y_network_q29.png",
+            src: "images/questions/delta_y_network_q29.png",
             alt: "Delta-Y network conversion",
             style: {
                 width: "100%",
@@ -408,7 +408,7 @@ int main()
     id: 55,
     question: e.jsxs("div", {
         children: ["Find the Y₁₁(s) parameter of the network shown below", e.jsx("img", {
-            src: "/questions/y_parameter_q65.png",
+            src: "images/questions/y_parameter_q65.png",
             alt: "Network for Y-parameter calculation",
             style: {
                 width: "100%",
@@ -503,7 +503,7 @@ int main()
     id: 68,
     question: e.jsxs("div", {
         children: ["Which logic gate does this circuit represent?", e.jsx("img", {
-            src: "/questions/logic_gate_q90.png",
+            src: "images/questions/logic_gate_q90.png",
             alt: "Logic gate circuit",
             style: {
                 width: "100%",

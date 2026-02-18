@@ -253,7 +253,7 @@ Thus, N diffuses faster than Cr, and 900°C gives faster diffusion than 700°C f
     id: 24,
     question: e.jsxs("div", {
         children: ["Match the correct answer according to the provided information below:", e.jsx("img", {
-            src: "/questions/metal_forming_processes.png",
+            src: "images/questions/metal_forming_processes.png",
             alt: "metal_forming_processes",
             style: {
                 maxWidth: "300px"
@@ -814,7 +814,7 @@ These steps are fundamental to all additive manufacturing processes, from FDM to
     id: 60,
     question: e.jsxs("div", {
         children: ["Match List I (hand and measuring tools) with List II (Description) and select the correct answer:", e.jsx("img", {
-            src: "/questions/hand_and_measuring_tools.png",
+            src: "images/questions/hand_and_measuring_tools.png",
             alt: "hand_and_measuring_tools",
             style: {
                 maxWidth: "300px"
@@ -1232,7 +1232,7 @@ This represents the bilateral tolerance where the nominal size is 22 mm with equ
     id: 96,
     question: e.jsxs("div", {
         children: ["Read the dimensions from the micrometer picture shown below? [Image of micrometer showing 15.5 mm]", e.jsx("img", {
-            src: "/questions/micrometer.png",
+            src: "images/questions/micrometer.png",
             alt: "micrometer",
             style: {
                 maxWidth: "300px"
@@ -1516,7 +1516,7 @@ Micrometer reading requires understanding both the main scale (in mm) and the ro
     id: 100,
     question: e.jsxs("div", {
         children: ["Match List I (Operations) with List II (Description) and select the correct answer:", e.jsx("img", {
-            src: "/questions/operations.png",
+            src: "images/questions/operations.png",
             alt: "operations",
             style: {
                 maxWidth: "300px"
