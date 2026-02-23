@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Clock3 } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { formatDuration } from "@/lib/utils/time";
 
@@ -94,14 +95,7 @@ interface ElapsedTimerProps {
 export function ElapsedTimer({ elapsedSec }: ElapsedTimerProps) {
   return (
     <div className="flex items-center gap-2 text-sm text-black/60">
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
+      <Clock3 className="h-4 w-4" aria-hidden="true" />
       <span>Elapsed: {formatDuration(elapsedSec)}</span>
     </div>
   );

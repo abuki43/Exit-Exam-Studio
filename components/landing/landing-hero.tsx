@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { LandingFooter } from "./landing-footer";
 
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const fadeUp = {
@@ -29,7 +30,20 @@ export function LandingHero() {
         <div className="absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-primary/30 sm:h-[300px] sm:w-[300px] lg:h-[360px] lg:w-[360px]" />
       </div>
 
-      <div className="mx-auto grid min-h-[100svh] max-w-6xl grid-cols-1 items-start gap-8 px-5 pb-14 pt-12 sm:items-center sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_0.9fr]">
+      <motion.a
+        href="https://github.com/abuki43/Exit-Exam-Studio"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute right-5 top-5 z-20 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-primaryDark shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-brand-primary/40 hover:bg-white/90"
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <Star className="h-3 w-3 fill-brand-accent text-brand-accent" aria-hidden="true" />
+        Rate us on GitHub
+      </motion.a>
+
+      <div className="mx-auto grid min-h-[100svh] max-w-6xl grid-cols-1 items-start gap-8 px-5 pb-14 pt-16 sm:items-center sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="relative z-10 space-y-5 sm:space-y-6">
           <motion.div
             className="flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-brand-primary/70"

@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 
@@ -664,9 +665,7 @@ export function ExamClient({ dataset }: { dataset: ExamDataset }) {
             disabled={currentIndex === 0}
             className="gap-2"
           >
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
+            <ChevronLeft className="h-4 w-4" aria-hidden="true" />
             Previous
           </Button>
           <Button
@@ -676,9 +675,7 @@ export function ExamClient({ dataset }: { dataset: ExamDataset }) {
             className="gap-2"
           >
             Next
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </Button>
           {!isReviewMode && (
             <>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 
 interface SubmitDialogProps {
@@ -48,9 +49,7 @@ export function SubmitDialog({
       <div className="relative panel w-full max-w-md p-6 animate-in fade-in zoom-in-95 duration-200">
         <div className="text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-brand-accent/20">
-            <svg className="h-6 w-6 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <CheckCircle2 className="h-6 w-6 text-brand-accent" aria-hidden="true" />
           </div>
           <h2 className="text-lg font-semibold text-brand-primaryDark">Submit Exam?</h2>
         </div>

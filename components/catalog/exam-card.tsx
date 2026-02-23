@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 import type { ExamMeta } from "@/lib/exam/types";
 import { Pill } from "@/components/ui/pill";
@@ -27,14 +28,10 @@ export function ExamCard({ exam }: { exam: ExamMeta }) {
         <span className="text-sm font-medium text-brand-primaryDark group-hover:text-brand-primary">
           Start Exam
         </span>
-        <svg
+        <ChevronRight
           className="h-5 w-5 text-brand-primary/60 transition-transform group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+          aria-hidden="true"
+        />
       </div>
     </Link>
   );
