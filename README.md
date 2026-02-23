@@ -2,11 +2,6 @@
 
 A public, local-first practice platform for Ethiopian university exit exams. No authentication required. Built with Next.js App Router, TypeScript, and Tailwind.
 
-## Requirements
-
-- Node.js 20+
-- npm
-
 ## Setup
 
 ```bash
