@@ -2,6 +2,8 @@
 
 A public, local-first practice platform for Ethiopian university exit exams. No authentication required. Built with Next.js App Router, TypeScript, and Tailwind.
 
+You can access the deployed version [here](https://exitexamstudio.app)
+
 ## Setup
 
 ```bash
