@@ -30,11 +30,8 @@ Generated files:
 - `generated/reports/data-quality.json`
 
 ### Normalization Rules
-
-- Supports rich questions with `e.jsx` / `e.jsxs` payloads.
 - Images are resolved from `images/questions` into `public/images/questions`.
 - Invalid questions (missing answer, insufficient options) are skipped from exam sessions.
-- Source year `2116` is mapped to display year `2016` but preserved as `sourceYear`.
 - Model files (`*-model.js`) are exposed as separate "Model" variants.
 
 ## Local Storage
