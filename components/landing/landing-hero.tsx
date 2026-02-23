@@ -60,7 +60,7 @@ export function LandingHero() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             A space built for Ethiopian university students. Focus on past
-            questions, track momentum, and move between practice and test modes without distractions.
+            questions, master the material, and walk into your exam with confidence.
           </motion.p>
 
           <motion.div
