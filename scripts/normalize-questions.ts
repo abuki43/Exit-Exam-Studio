@@ -90,7 +90,12 @@ function normalizeText(value: unknown): string {
   return "";
 }
 
-function normalizeStringBlocks(value: string): RichBlock[] {
+type NormalizeTextOptions = {
+  preserveTags?: boolean;
+};
+
+function normalizeStringBlocks(value: string, options: NormalizeTextOptions = {}): RichBlock[] {
+  const preserveTags = options.preserveTags ?? false;
   const normalizedValue = value.replace(/<br\s*\/?>/gi, "\n");
   if (!normalizedValue.includes("<")) {
     return normalizedValue
@@ -110,7 +115,8 @@ function normalizeStringBlocks(value: string): RichBlock[] {
   while ((match = imgRegex.exec(normalizedValue))) {
     const before = normalizedValue.slice(lastIndex, match.index);
     if (before.trim()) {
-      blocks.push({ type: "text", text: before.replace(/<[^>]+>/g, "").trim() });
+      const text = preserveTags ? before : before.replace(/<[^>]+>/g, "");
+      blocks.push({ type: "text", text: text.trim() });
     }
 
     const rawSrc = match[1];
@@ -121,42 +127,51 @@ function normalizeStringBlocks(value: string): RichBlock[] {
 
   const remaining = normalizedValue.slice(lastIndex);
   if (remaining.trim()) {
-    blocks.push({ type: "text", text: remaining.replace(/<[^>]+>/g, "").trim() });
+    const text = preserveTags ? remaining : remaining.replace(/<[^>]+>/g, "");
+    blocks.push({ type: "text", text: text.trim() });
   }
 
   return blocks.length > 0
     ? blocks
-    : [{ type: "text", text: normalizedValue.replace(/<[^>]+>/g, "").trim() }];
+    : [
+        {
+          type: "text",
+          text: preserveTags ? normalizedValue.trim() : normalizedValue.replace(/<[^>]+>/g, "").trim(),
+        },
+      ];
 }
 
-function normalizeBlocks(value: unknown): RichBlock[] {
+function normalizeBlocks(value: unknown, options: NormalizeTextOptions = {}): RichBlock[] {
   if (value === null || value === undefined) {
     return [{ type: "text", text: "" }];
   }
 
   if (typeof value === "string") {
-    return normalizeStringBlocks(value);
+    return normalizeStringBlocks(value, options);
   }
 
   if (typeof value === "object") {
     const node = value as { __kind?: string; type?: unknown; props?: Record<string, unknown> };
     if (node.__kind === "jsx" || node.__kind === "jsxs") {
-      return normalizeReactNode(node);
+      return normalizeReactNode(node, options);
     }
   }
 
   return [{ type: "text", text: normalizeText(value) }];
 }
 
-function normalizeChildren(children: unknown): RichBlock[] {
+function normalizeChildren(children: unknown, options: NormalizeTextOptions = {}): RichBlock[] {
   if (Array.isArray(children)) {
-    return children.flatMap((child) => normalizeBlocks(child));
+    return children.flatMap((child) => normalizeBlocks(child, options));
   }
 
-  return normalizeBlocks(children);
+  return normalizeBlocks(children, options);
 }
 
-function normalizeReactNode(node: { type?: unknown; props?: Record<string, unknown> }): RichBlock[] {
+function normalizeReactNode(
+  node: { type?: unknown; props?: Record<string, unknown> },
+  options: NormalizeTextOptions = {}
+): RichBlock[] {
   const tag = typeof node.type === "string" ? node.type : "div";
   const props = node.props ?? {};
 
@@ -176,7 +191,7 @@ function normalizeReactNode(node: { type?: unknown; props?: Record<string, unkno
     return [{ type: "line-break" }];
   }
 
-  const childrenBlocks = normalizeChildren(props.children);
+  const childrenBlocks = normalizeChildren(props.children, options);
   return [
     {
       type: "container",
@@ -191,7 +206,7 @@ function normalizeReactNode(node: { type?: unknown; props?: Record<string, unkno
 function normalizeOptions(options: unknown[]): NormalizedOption[] {
   return options.map((option, index) => ({
     key: `option_${index}`,
-    blocks: normalizeBlocks(option),
+    blocks: normalizeBlocks(option, { preserveTags: true }),
   }));
 }
 
