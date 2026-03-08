@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { SiteLogo } from "@/components/branding/site-logo";
 import { cn } from "@/lib/utils/cn";
 
 type PageHeaderProps = {
@@ -34,7 +35,10 @@ export function PageHeader({
           <span />
         )}
         {eyebrow && (
-          <span className="uppercase tracking-[0.28em] text-brand-primary/70">{eyebrow}</span>
+          <div className="inline-flex items-center gap-3">
+            <SiteLogo linked size="sm" showWordmark={false} />
+            <span className="uppercase tracking-[0.28em] text-brand-primary/70">{eyebrow}</span>
+          </div>
         )}
       </div>
       <div className="border-b border-black/10 pb-6">

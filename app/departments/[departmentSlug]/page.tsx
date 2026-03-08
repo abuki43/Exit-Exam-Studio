@@ -2,8 +2,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ExamCard } from "@/components/catalog/exam-card";
 import { LandingFooter } from "@/components/landing/landing-footer";
+import { StructuredData } from "@/components/seo/structured-data";
 import { PageHeader } from "@/components/ui/page-header";
 import { getDepartmentBySlug, getDepartments } from "@/lib/data/generated";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo/site";
 
 export const revalidate = 86400;
 
@@ -18,8 +20,30 @@ export async function generateMetadata({
   params: Promise<{ departmentSlug: string }>;
 }): Promise<Metadata> {
   const { departmentSlug } = await params;
+  const data = await getDepartmentBySlug(departmentSlug);
+
+  if (!data) {
+    return buildPageMetadata({
+      title: "Department not found",
+      description: "The requested Ethiopian exit exam department page could not be found.",
+      path: `/departments/${departmentSlug}`,
+      noIndex: true,
+    });
+  }
+
+  const { department } = data;
+
   return {
-    title: departmentSlug?.replace(/-/g, " ") ?? "Department",
+    ...buildPageMetadata({
+      title: `${department.name} Exit Exam Practice`,
+      description: `Practice ${department.name} Ethiopian exit exams with ${department.examCount} exam sets and ${department.totalPlayableQuestions} playable questions across ${department.years.join(", ")}.`,
+      path: `/departments/${department.slug}`,
+      keywords: [
+        `${department.name} exit exam`,
+        `${department.name} exit exam practice`,
+        `${department.name} Ethiopian exit exam questions`,
+      ],
+    }),
   };
 }
 
@@ -48,10 +72,54 @@ export default async function DepartmentPage({
   }
 
   const { department, exams } = data;
+  const pageUrl = absoluteUrl(`/departments/${department.slug}`);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: absoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Departments",
+        item: absoluteUrl("/departments"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: department.name,
+        item: pageUrl,
+      },
+    ],
+  };
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${department.name} Ethiopian exit exams`,
+    url: pageUrl,
+    description: `Browse ${department.name} exit exam practice sets by year and variant.`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: exams.length,
+      itemListElement: exams.map((exam, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: exam.label,
+        url: absoluteUrl(`/exam/${exam.examId}`),
+      })),
+    },
+  };
 
   return (
     <div className="page-bg min-h-screen flex flex-col">
       <main className="flex-1">
+        <StructuredData id={`dept-breadcrumb-${department.slug}`} data={breadcrumbSchema} />
+        <StructuredData id={`dept-collection-${department.slug}`} data={collectionSchema} />
         <PageHeader
           title={department.name}
           eyebrow="Departments"
@@ -61,6 +129,11 @@ export default async function DepartmentPage({
         />
 
         <section className="page-section mx-auto max-w-6xl">
+          <div className="max-w-3xl text-sm leading-7 text-black/70">
+            Practice {department.name} Ethiopian exit exams by year. This page includes{" "}
+            {department.examCount} exam sets covering {department.years.join(", ")} with{" "}
+            {department.totalPlayableQuestions} playable questions for revision and mock testing.
+          </div>
           <div className="grid gap-6 md:grid-cols-2">
             {exams.map((exam) => (
               <ExamCard key={exam.examId} exam={exam} />

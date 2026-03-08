@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { LandingFooter } from "./landing-footer";
 
+import { SiteLogo } from "@/components/branding/site-logo";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +12,19 @@ const fadeUp = {
   animate: { opacity: 1, y: 0 },
 };
 
-export function LandingHero() {
+function formatNumber(value: number) {
+  return new Intl.NumberFormat("en-US").format(value);
+}
+
+export function LandingHero({
+  stats,
+}: {
+  stats: {
+    departmentCount: number;
+    examCount: number;
+    playableQuestionCount: number;
+  };
+}) {
   return (
     <section className="hero-bg relative min-h-[100svh] overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
@@ -46,13 +58,14 @@ export function LandingHero() {
       <div className="mx-auto grid min-h-[100svh] max-w-6xl grid-cols-1 items-start gap-8 px-5 pb-14 pt-16 sm:items-center sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="relative z-10 space-y-5 sm:space-y-6">
           <motion.div
-            className="flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-brand-primary/70"
+            className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.35em] text-brand-primary/70"
             initial="initial"
             animate="animate"
             variants={fadeUp}
             transition={{ duration: 0.6 }}
           >
-            <span className="h-px w-10 bg-brand-primary/40" />
+            {/* <span className="h-px w-10 bg-brand-primary/40" /> */}
+            <SiteLogo size="md" showWordmark={false} />
             Practice Exit Exam.
           </motion.div>
 
@@ -73,7 +86,7 @@ export function LandingHero() {
             variants={fadeUp}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            A space built for Ethiopian university students. Focus on past
+            A free space built for Ethiopian university students. Focus on past
             questions, master the material, and walk into your exam with confidence.
           </motion.p>
 
@@ -95,7 +108,7 @@ export function LandingHero() {
             variants={fadeUp}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            100%Free . No login · Resume anytime 
+            100% free · No login · Resume anytime
           </motion.p>
         </div>
 
@@ -109,12 +122,11 @@ export function LandingHero() {
           <div className="absolute h-[150px] w-[150px] rotate-45 rounded-[40px] border border-brand-primary/20 sm:h-[190px] sm:w-[190px] lg:h-[250px] lg:w-[250px]" />
           <div className="absolute h-16 w-16 rounded-full border border-brand-accent/70 bg-brand-accent/40 sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
           <div className="text-center">
-            <p className="text-xs uppercase tracking-[0.5em] text-brand-primary/60">Exit</p>
-            <p className="font-display text-4xl text-brand-primaryDark sm:text-5xl lg:text-6xl">Exam</p>
+            <p className="text-xs uppercase tracking-[0.5em] text-brand-primary/60">Ethiopian</p>
+            <p className="font-display text-4xl text-brand-primaryDark sm:text-5xl lg:text-6xl">Exit Exam</p>
             <p className="mt-2 text-xs text-black/60">Practice · Test · Review</p>
           </div>
         </motion.div>
-      {/* <LandingFooter /> */}
       </div>
     </section>
   );

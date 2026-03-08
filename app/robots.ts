@@ -1,11 +1,16 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/lib/seo/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: "https://exitexamstudio.app/sitemap.xml",
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/history", "/api/"],
+      },
+    ],
+    host: siteConfig.url,
+    sitemap: `${siteConfig.url}/sitemap.xml`,
   };
 }

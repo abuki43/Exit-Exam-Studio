@@ -1,9 +1,49 @@
+import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 
+import { StructuredData } from "@/components/seo/structured-data";
 import { ExamClient } from "@/components/exam/exam-client";
 import { LandingFooter } from "@/components/landing/landing-footer";
 import { PageHeader } from "@/components/ui/page-header";
-import { readExamDataset } from "@/lib/data/generated";
+import { getExamMetaById, readExamDataset, readManifest } from "@/lib/data/generated";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo/site";
+
+export const revalidate = 86400;
+
+export async function generateStaticParams() {
+  const manifest = await readManifest();
+  return (manifest?.exams ?? []).map((exam) => ({ examId: exam.examId }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ examId: string }>;
+}): Promise<Metadata> {
+  const { examId } = await params;
+  const exam = await getExamMetaById(examId);
+
+  if (!exam) {
+    return buildPageMetadata({
+      title: "Exam not found",
+      description: "The requested Ethiopian exit exam page could not be found.",
+      path: `/exam/${examId}`,
+      noIndex: true,
+    });
+  }
+
+  return buildPageMetadata({
+    title: `${exam.departmentName} ${exam.displayYear}${exam.variant === "model" ? " Model" : ""} Exit Exam`,
+    description: `Practice the ${exam.departmentName} ${exam.displayYear}${exam.variant === "model" ? " model" : ""} Ethiopian exit exam with ${exam.playableQuestionCount} playable questions.`,
+    path: `/exam/${exam.examId}`,
+    keywords: [
+      `${exam.departmentName} ${exam.displayYear} exit exam`,
+      `${exam.departmentName} exit exam questions`,
+      `${exam.departmentName} Ethiopian exit exam practice`,
+    ],
+  });
+}
 
 export default async function ExamPage({ params }: { params: Promise<{ examId: string }> }) {
   const { examId } = await params;
@@ -28,10 +68,56 @@ export default async function ExamPage({ params }: { params: Promise<{ examId: s
   const label = `${dataset.meta.departmentName} / ${dataset.meta.displayYear}${
     dataset.meta.variant === "model" ? " Model" : ""
   } Exit Exam`;
+  const pageUrl = absoluteUrl(`/exam/${dataset.meta.examId}`);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: absoluteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Departments",
+        item: absoluteUrl("/departments"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: dataset.meta.departmentName,
+        item: absoluteUrl(`/departments/${dataset.meta.departmentSlug}`),
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: label,
+        item: pageUrl,
+      },
+    ],
+  };
+  const learningResourceSchema = {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: label,
+    url: pageUrl,
+    description: `Interactive Ethiopian exit exam practice page for ${dataset.meta.departmentName}, ${dataset.meta.displayYear}.`,
+    learningResourceType: "Practice Exam",
+    educationalLevel: "University",
+    isAccessibleForFree: true,
+    inLanguage: "en",
+    numberOfQuestions: dataset.meta.playableQuestionCount,
+    about: dataset.meta.departmentName,
+  };
 
   return (
     <div className="page-bg min-h-screen flex flex-col">
       <main className="flex-1">
+        <StructuredData id={`exam-breadcrumb-${dataset.meta.examId}`} data={breadcrumbSchema} />
+        <StructuredData id={`exam-resource-${dataset.meta.examId}`} data={learningResourceSchema} />
         <PageHeader
           title={label}
           eyebrow="Exam Session"
@@ -40,7 +126,21 @@ export default async function ExamPage({ params }: { params: Promise<{ examId: s
           backLabel={dataset.meta.departmentName}
         />
         <section className="page-section">
-          <ExamClient dataset={dataset} />
+          <div className="mx-auto mb-6 max-w-5xl text-sm leading-7 text-black/70">
+            Practice the {dataset.meta.departmentName} {dataset.meta.displayYear}
+            {dataset.meta.variant === "model" ? " model" : ""} Ethiopian exit exam online. Use
+            practice mode for instant feedback or switch to test mode for a timed mock exam
+            experience.
+          </div>
+          <Suspense
+            fallback={
+              <div className="mx-auto max-w-5xl rounded-3xl border border-black/10 bg-white/70 p-6 text-sm text-black/60">
+                Loading the exam interface...
+              </div>
+            }
+          >
+            <ExamClient dataset={dataset} />
+          </Suspense>
         </section>
       </main>
       <LandingFooter />
