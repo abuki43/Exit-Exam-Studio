@@ -408,9 +408,6 @@ export function ExamClient({ dataset }: { dataset: ExamDataset }) {
     return (
       <div className="py-8">
         <ModeSelectScreen
-          examTitle={`${dataset.meta.departmentName} / ${dataset.meta.displayYear}${
-            dataset.meta.variant === "model" ? " Model" : ""
-          } Exit Exam`}
           questionCount={playableQuestions.length}
           defaultMode={mode}
           onStart={handleStartExam}

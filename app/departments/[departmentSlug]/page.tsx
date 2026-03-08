@@ -129,11 +129,6 @@ export default async function DepartmentPage({
         />
 
         <section className="page-section mx-auto max-w-6xl">
-          <div className="max-w-3xl text-sm leading-7 text-black/70">
-            Practice {department.name} Ethiopian exit exams by year. This page includes{" "}
-            {department.examCount} exam sets covering {department.years.join(", ")} with{" "}
-            {department.totalPlayableQuestions} playable questions for revision and mock testing.
-          </div>
           <div className="grid gap-6 md:grid-cols-2">
             {exams.map((exam) => (
               <ExamCard key={exam.examId} exam={exam} />

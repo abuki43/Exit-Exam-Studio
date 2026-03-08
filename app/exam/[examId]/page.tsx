@@ -126,12 +126,6 @@ export default async function ExamPage({ params }: { params: Promise<{ examId: s
           backLabel={dataset.meta.departmentName}
         />
         <section className="page-section">
-          <div className="mx-auto mb-6 max-w-5xl text-sm leading-7 text-black/70">
-            Practice the {dataset.meta.departmentName} {dataset.meta.displayYear}
-            {dataset.meta.variant === "model" ? " model" : ""} Ethiopian exit exam online. Use
-            practice mode for instant feedback or switch to test mode for a timed mock exam
-            experience.
-          </div>
           <Suspense
             fallback={
               <div className="mx-auto max-w-5xl rounded-3xl border border-black/10 bg-white/70 p-6 text-sm text-black/60">

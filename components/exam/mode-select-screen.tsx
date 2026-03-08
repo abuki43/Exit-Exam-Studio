@@ -6,7 +6,6 @@ import { formatDuration } from "@/lib/utils/time";
 import type { ExamMode } from "@/lib/exam/types";
 
 interface ModeSelectScreenProps {
-  examTitle: string;
   questionCount: number;
   defaultMode: ExamMode;
   onStart: (mode: ExamMode, timerEnabled: boolean, timerDuration: number) => void;
@@ -27,7 +26,6 @@ const PRACTICE_TIMER_OPTIONS = [
 ];
 
 export function ModeSelectScreen({
-  examTitle,
   questionCount,
   defaultMode,
   onStart,
@@ -44,11 +42,6 @@ export function ModeSelectScreen({
 
   return (
     <div className="mx-auto max-w-2xl">
-      <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold text-brand-primaryDark">{examTitle}</h1>
-        <p className="mt-2 text-sm text-black/60">{questionCount} questions</p>
-      </div>
-
       <div className="panel p-6 space-y-6">
         <div>
           <h2 className="text-sm font-semibold text-brand-primaryDark mb-3">Select Mode</h2>
