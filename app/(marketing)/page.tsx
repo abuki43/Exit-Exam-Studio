@@ -26,15 +26,18 @@ export default async function LandingPage() {
 
   if (!manifest) {
     return (
-      <main className="min-h-screen">
-        <LandingHero
-          stats={{
-            departmentCount: 0,
-            examCount: 0,
-            playableQuestionCount: 0,
-          }}
-        />
-      </main>
+      <>
+        <main className="min-h-screen">
+          <LandingHero
+            stats={{
+              departmentCount: 0,
+              examCount: 0,
+              playableQuestionCount: 0,
+            }}
+          />
+        </main>
+        <LandingFooter />
+      </>
     );
   }
 
@@ -53,16 +56,19 @@ export default async function LandingPage() {
   };
 
   return (
-    <main className="min-h-screen">
-      <StructuredData id="landing-page-jsonld" data={websiteSchema} />
-      <StructuredData id="landing-faq-jsonld" data={getLandingFaqSchema()} />
-      <LandingHero
-        stats={{
-          departmentCount: manifest.departments.length,
-          examCount: manifest.stats.examCount,
-          playableQuestionCount: manifest.stats.playableQuestionCount,
-        }}
-      />
-    </main>
+    <>
+      <main className="min-h-screen">
+        <StructuredData id="landing-page-jsonld" data={websiteSchema} />
+        <StructuredData id="landing-faq-jsonld" data={getLandingFaqSchema()} />
+        <LandingHero
+          stats={{
+            departmentCount: manifest.departments.length,
+            examCount: manifest.stats.examCount,
+            playableQuestionCount: manifest.stats.playableQuestionCount,
+          }}
+        />
+      </main>
+      <LandingFooter />
+    </>
   );
 }

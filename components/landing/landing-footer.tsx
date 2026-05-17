@@ -6,7 +6,7 @@ export function LandingFooter() {
           href="https://t.me/Abking1"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[10px] text-black/50 hover:text-brand-primary absolute bottom-2 right-4 "
+          className="text-[15px] text-black/50 hover:text-brand-primary absolute bottom-2 right-4 "
         >
           Made by Abuki
         </a>
